@@ -1,0 +1,25 @@
+# Output directory with processed images
+output/
+
+# Images directory (test images and processed originals)
+images/
+
+# MATLAB/Octave temporary files
+*.asv
+*.autosave
+*.m~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python script for generating comparison images (optional - can be kept for regeneration)
+# create_overview_comparison.py
+
