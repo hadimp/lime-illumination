@@ -1,4 +1,4 @@
-# Low-Light Image Enhancement
+# LIME: Illumination Map Estimation
 
 A modern, refactored and minimal implementation of the "LIME" (Low-Light Image Enhancement via Illumination Map Estimation) algorithm for improving the visibility of low-light images.
 
@@ -35,7 +35,7 @@ The LIME algorithm works in several steps:
 ## Project Structure
 
 ```
-LowLightImageEnhancement/
+lime-illumination/
 ├── @LIME/                    # LIME class directory
 │   └── LIME.m               # Main LIME class implementation
 ├── utils/                    # Utility functions
