@@ -1,0 +1,38 @@
+# Dockerfile for NVIDIA Jetson Nano (older JetPack versions)
+# Alternative base image for Jetson Nano with JetPack 4.x
+
+FROM nvcr.io/nvidia/l4t-base:r32.7.1
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-dev \
+    libpython3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Upgrade pip
+RUN python3 -m pip install --upgrade pip setuptools wheel
+
+# Copy requirements first for better caching
+COPY python/requirements.txt /app/requirements.txt
+
+# Install Python dependencies
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Copy Python source code
+COPY python/ /app/python/
+
+# Set Python path
+ENV PYTHONPATH=/app/python:$PYTHONPATH
+ENV PYTHONUNBUFFERED=1
+
+# Create directories for input and output
+RUN mkdir -p /app/images /app/output
+
+# Default command (can be overridden)
+CMD ["python3", "/app/python/main.py"]
+

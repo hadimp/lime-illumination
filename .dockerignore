@@ -1,0 +1,42 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Output files (will be mounted as volume)
+output/
+
+# Documentation
+*.pdf
+*.md
+!README.md
+
+# MATLAB files (not needed for Python deployment)
+matlab/
+
+# Comparison images
+comparison_*.png
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+

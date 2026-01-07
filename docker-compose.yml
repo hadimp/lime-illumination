@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  lime-enhancement:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: lime-enhancement:jetson
+    container_name: lime-enhancement
+    volumes:
+      # Mount images directory for input
+      - ./images:/app/images:ro
+      # Mount output directory for results
+      - ./output:/app/output
+      # Optional: mount custom config
+      # - ./python/config.py:/app/python/config.py:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Override command as needed
+    # command: ["python3", "/app/python/main.py"]
+    # For batch processing:
+    # command: ["python3", "/app/python/batch_process.py"]
+    restart: unless-stopped
+
