@@ -97,13 +97,3 @@ imshow(enhancedImage);
 
 [2] S. Boyd, N. Parikh, E. Chu, B. Peleato, and J. Eckstein, "Distributed optimization and statistical learning via the alternating direction method of multipliers," Foundations and Trends in Machine Learning, vol. 3, no. 1, pp. 1–122, 2011. [Online]. Available: http://dx.doi.org/10.1561/2200000016
 
-## Features
-
-- **Object-Oriented Design**: Clean OOP structure with the `LIME` class
-- **Modular Code**: Well-organized functions with clear responsibilities
-- **Comprehensive Documentation**: Google-style docstrings explaining the mathematics
-- **Configurable**: Easy-to-use configuration system for parameters and file paths
-- **Modern MATLAB**: Uses modern MATLAB conventions and best practices
-- **Batch Processing**: Process multiple images automatically
-- **Octave Compatible**: Works with both MATLAB and Octave
-
