@@ -35,39 +35,58 @@ The LIME algorithm works in several steps:
 ## Project Structure
 
 ```
-lime-illumination/
-├── @LIME/                    # LIME class directory
-│   └── LIME.m               # Main LIME class implementation
-├── utils/                    # Utility functions
-│   ├── computeGradient.m
-│   ├── applyGradientAdjoint.m
-│   ├── computeTDenominator.m
-│   ├── computeTNumerator.m
-│   └── createDifferenceMatrix.m
-├── config.m                  # Configuration function
-├── main.m                    # Main script
+LowLightImageEnhancement/
+├── matlab/                   # MATLAB implementation
+│   ├── @LIME/               # LIME class directory
+│   │   └── LIME.m           # Main LIME class implementation
+│   ├── utils/               # Utility functions
+│   │   ├── computeGradient.m
+│   │   ├── applyGradientAdjoint.m
+│   │   ├── computeTDenominator.m
+│   │   ├── computeTNumerator.m
+│   │   └── createDifferenceMatrix.m
+│   ├── config.m             # Configuration function
+│   ├── main.m               # Main script
+│   └── batch_process.m       # Batch processing script
+├── python/                  # Python implementation
+│   ├── utils/               # Utility functions
+│   │   ├── compute_gradient.py
+│   │   ├── apply_gradient_adjoint.py
+│   │   ├── compute_t_denominator.py
+│   │   ├── compute_t_numerator.py
+│   │   └── create_difference_matrix.py
+│   ├── lime.py              # Main LIME class implementation
+│   ├── config.py            # Configuration module
+│   ├── main.py              # Main script
+│   ├── batch_process.py     # Batch processing script
+│   └── requirements.txt     # Python dependencies
+├── images/                  # Input images directory
+├── output/                  # Output images directory
 └── README.md
 ```
 
 ## Usage
 
-### Quick Start
+### MATLAB Implementation
 
-1. **Configure parameters** by editing `config.m`:
+#### Quick Start
+
+1. **Configure parameters** by editing `matlab/config.m`:
    ```matlab
-   config.inputPath = 'your_image.bmp';  % Input image path
-   config.outputDir = './output';         % Output directory
-   config.alpha = 3;                      % Structure preservation weight
-   config.gamma = 0.8;                    % Gamma correction parameter
-   config.numIterations = 50;             % ADMM iterations
+   config.inputPath = 'images/your_image.bmp';  % Input image path
+   config.outputDir = '../output';               % Output directory
+   config.alpha = 3;                            % Structure preservation weight
+   config.gamma = 0.8;                          % Gamma correction parameter
+   config.numIterations = 50;                    % ADMM iterations
    ```
 
 2. **Run the main script**:
    ```matlab
+   cd matlab
    main()
    ```
 
-### Using the LIME Class Directly
+#### Using the LIME Class Directly
 
 For more control, you can use the LIME class directly:
 
@@ -76,11 +95,57 @@ For more control, you can use the LIME class directly:
 enhancer = LIME('alpha', 3, 'gamma', 0.8, 'numIterations', 50);
 
 % Load and enhance image
-inputImage = imread('your_image.bmp');
+inputImage = imread('images/your_image.bmp');
 [enhancedImage, results] = enhancer.enhance(inputImage);
 
 % Display results
 imshow(enhancedImage);
+```
+
+### Python Implementation
+
+#### Quick Start
+
+1. **Install dependencies**:
+   ```bash
+   pip install -r python/requirements.txt
+   ```
+
+2. **Configure parameters** by editing `python/config.py`:
+   ```python
+   input_path: str = 'images/your_image.bmp'  # Input image path
+   output_dir: str = '../output'               # Output directory
+   alpha: float = 3.0                          # Structure preservation weight
+   gamma: float = 0.8                          # Gamma correction parameter
+   num_iterations: int = 50                    # ADMM iterations
+   ```
+
+3. **Run the main script**:
+   ```bash
+   cd python
+   python main.py
+   ```
+
+#### Using the LIME Class Directly
+
+For more control, you can use the LIME class directly:
+
+```python
+from lime import LIME
+from PIL import Image
+import numpy as np
+
+# Create enhancer with custom parameters
+enhancer = LIME(alpha=3, gamma=0.8, num_iterations=50)
+
+# Load and enhance image
+input_image = np.array(Image.open('images/your_image.bmp'))
+enhanced_image, results = enhancer.enhance(input_image)
+
+# Display results
+from matplotlib import pyplot as plt
+plt.imshow(enhanced_image)
+plt.show()
 ```
 
 ### Configuration Parameters

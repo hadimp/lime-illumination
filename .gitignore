@@ -20,6 +20,13 @@ Thumbs.db
 *.swo
 *~
 
-# Python script for generating comparison images (optional - can be kept for regeneration)
-# create_overview_comparison.py
-
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/

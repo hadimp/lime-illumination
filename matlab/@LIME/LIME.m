@@ -43,8 +43,8 @@ classdef LIME < handle
             
             % Add utils directory to path for utility functions
             classDir = fileparts(mfilename('fullpath'));
-            projectRoot = fileparts(classDir);  % Go up from @LIME to project root
-            utilsPath = fullfile(projectRoot, 'utils');
+            matlabDir = fileparts(classDir);  % Go up from @LIME to matlab directory
+            utilsPath = fullfile(matlabDir, 'utils');
             if exist(utilsPath, 'dir')
                 addpath(utilsPath);
             end

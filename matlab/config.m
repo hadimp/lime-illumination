@@ -17,9 +17,9 @@ function config = config()
     
     config = struct();
     
-    % File paths
-    config.inputPath = 'images/cars.bmp';
-    config.outputDir = './output';
+    % File paths (relative to project root)
+    config.inputPath = '../images/cars.bmp';  % Go up from matlab/ to project root
+    config.outputDir = '../output';            % Go up from matlab/ to project root
     
     % Algorithm parameters
     config.alpha = 3;          % Structure preservation weight
